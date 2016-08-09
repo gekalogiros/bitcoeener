@@ -87,7 +87,7 @@ You can think about this as a software that maintains collection of random priva
 
 e.g this type of wallet can store hundreds or thousands of unrelated private keys. However, if you generate private keys often, then backing them all can be a pain. For this particular reason people started using Deterministic wallets.
 
-* (Deterministic wallet)[https://en.bitcoin.it/wiki/Deterministic_wallet]
+* [Deterministic wallet](https://en.bitcoin.it/wiki/Deterministic_wallet)
 
 A deterministic wallet can generate multiple private keys which seem unrelated but they all have been generated from the same seed. So, if the seed is known, all the keys can be derived easily from the seed by simply feeding them to a hash function.
 
