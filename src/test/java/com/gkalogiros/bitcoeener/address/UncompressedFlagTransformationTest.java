@@ -1,5 +1,7 @@
 package com.gkalogiros.bitcoeener.address;
 
+import com.gkalogiros.bitcoeener.transformations.PayloadPrefixing;
+import com.gkalogiros.bitcoeener.transformations.UncompressedFlagTransformation;
 import org.fest.assertions.Assertions;
 import org.junit.Test;
 

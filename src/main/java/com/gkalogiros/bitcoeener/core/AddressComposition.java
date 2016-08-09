@@ -1,22 +1,22 @@
 package com.gkalogiros.bitcoeener.core;
 
-import com.gkalogiros.bitcoeener.address.UncompressedFlagTransformation;
+import com.gkalogiros.bitcoeener.transformations.HashingTransformation;
+import com.gkalogiros.bitcoeener.transformations.NetworkFlagTransformation;
+import com.gkalogiros.bitcoeener.transformations.PayloadPrefixing;
+import com.gkalogiros.bitcoeener.transformations.UncompressedFlagTransformation;
 import com.gkalogiros.bitcoeener.domain.Network;
-import com.gkalogiros.bitcoeener.hashing.AbstractHashing;
+import com.gkalogiros.bitcoeener.hashing.Hashing;
 import com.gkalogiros.bitcoeener.hashing.RIPEMD160;
 import com.gkalogiros.bitcoeener.hashing.SHA256;
-import com.gkalogiros.bitcoeener.address.NetworkFlagTransformation;
-import com.gkalogiros.bitcoeener.address.HashingTransformation;
-import com.gkalogiros.bitcoeener.address.PayloadPrefixing;
+import com.google.common.primitives.Bytes;
 
+import java.util.Arrays;
 import java.util.function.Function;
 
 public class AddressComposition implements Function<byte[], byte[]>
 {
 
-    private final AbstractHashing sha256;
-
-    private final AbstractHashing ripemd160;
+    private final Hashing sha256, ripemd160;
 
     private final PayloadPrefixing payloadPrefixing;
 
@@ -36,10 +36,23 @@ public class AddressComposition implements Function<byte[], byte[]>
     @Override
     public byte[] apply(byte[] publicKey)
     {
-        return flagPublicKeyAsUncompressed
-                .andThen(toSHA256)
-                .andThen(toRIPEMD160)
-                .andThen(addNetworkBytes)
-                .apply(publicKey);
+        byte[] address =
+                flagPublicKeyAsUncompressed
+                        .andThen(toSHA256)
+                        .andThen(toRIPEMD160)
+                        .andThen(addNetworkBytes)
+                        .apply(publicKey);
+
+        return Bytes.concat(address, generateCheckSum(address));
+    }
+
+    private byte[] generateCheckSum(byte[] data)
+    {
+        return extractChecksum(toSHA256.andThen(toSHA256).apply(data));
+    }
+
+    private byte[] extractChecksum(byte[] data)
+    {
+        return Arrays.copyOfRange(data, 0, 4);
     }
 }

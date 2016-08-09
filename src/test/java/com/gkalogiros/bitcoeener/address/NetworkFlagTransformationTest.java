@@ -1,6 +1,8 @@
 package com.gkalogiros.bitcoeener.address;
 
 import com.gkalogiros.bitcoeener.domain.Network;
+import com.gkalogiros.bitcoeener.transformations.NetworkFlagTransformation;
+import com.gkalogiros.bitcoeener.transformations.PayloadPrefixing;
 import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;

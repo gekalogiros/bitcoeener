@@ -1,4 +1,4 @@
-package com.gkalogiros.bitcoeener.address;
+package com.gkalogiros.bitcoeener.transformations;
 
 import com.gkalogiros.bitcoeener.domain.Network;
 import com.gkalogiros.bitcoeener.core.NetworkByteFactory;

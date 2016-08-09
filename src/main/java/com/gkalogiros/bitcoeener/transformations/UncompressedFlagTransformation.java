@@ -1,4 +1,4 @@
-package com.gkalogiros.bitcoeener.address;
+package com.gkalogiros.bitcoeener.transformations;
 
 import java.util.function.Function;
 
