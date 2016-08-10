@@ -5,6 +5,8 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.math.BigInteger;
 
+import static java.math.BigInteger.*;
+
 public class Base58Encoding implements Encoding<Base58>
 {
     private static final char[] ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz".toCharArray();
@@ -20,7 +22,7 @@ public class Base58Encoding implements Encoding<Base58>
 
         int zeros = countLeadingZeros(bi.toByteArray());
 
-        while (bi.compareTo(BigInteger.ZERO) > 0)
+        while (bi.compareTo(ZERO) > 0)
         {
             BigInteger[] divideAndRemainder = bi.divideAndRemainder(BASE);
 
@@ -37,8 +39,7 @@ public class Base58Encoding implements Encoding<Base58>
             zeros--;
         }
 
-        // Remove signum from Big Integer
-        return new Base58(sb.reverse().toString().substring(1).getBytes());
+        return new Base58(sb.reverse().toString().getBytes());
     }
 
     @Override
