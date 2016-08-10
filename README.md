@@ -1,5 +1,10 @@
 Bitcoeener
 ===================
+![alt text][travisci]
+[travisci]: https://travis-ci.org/gekalogiros/bitcoeener.svg?branch=master "Travis CI Status"
+
+What is this?
+===================
 
 A utilities collection implementing Bitcoin operations and transformations
 
