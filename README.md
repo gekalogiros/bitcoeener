@@ -1,6 +1,7 @@
 Bitcoeener
 ===================
-[logo]: https://travis-ci.org/gekalogiros/bitcoeener.svg?branch=master "Travis CI Status"
+![alt text][travisci]
+[travisci]: https://travis-ci.org/gekalogiros/bitcoeener.svg?branch=master "Travis CI Status"
 
 What is this?
 ===================
